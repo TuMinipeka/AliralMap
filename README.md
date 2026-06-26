@@ -182,7 +182,7 @@ En el dashboard de Supabase:
 ## 🚀 Despliegue local (desarrollo)
 
 ### Requisitos
-- Node.js 18+ 
+- Node.js 20+ 
 - npm 9+
 - Cuenta en [Supabase](https://supabase.com) (gratuita)
 
@@ -206,6 +206,55 @@ cp .env.example .env
 npm run dev
 # → http://localhost:5173
 ```
+
+---
+
+## 🐳 Docker
+
+### Desarrollo con Docker (recomendado para el equipo)
+
+No requiere tener Node instalado en el host. El hot reload funciona igual gracias al volumen montado.
+
+```bash
+# 1. Copiar y rellenar las variables de entorno
+cp .env.example .env
+# Editar .env con tus valores de Supabase
+
+# 2. Levantar el contenedor de desarrollo
+docker compose up
+# → http://localhost:5173 con hot reload activo
+
+# Parar
+docker compose down
+```
+
+> La primera vez tarda un poco más porque instala `node_modules` dentro del contenedor.
+
+### Producción con Docker (imagen nginx)
+
+Las variables de entorno de Vite se hornean en el bundle durante el build,  
+por eso se pasan como `--build-arg` y no como variables de runtime.
+
+```bash
+docker build \
+  --target production \
+  --build-arg VITE_SUPABASE_URL=https://xxxx.supabase.co \
+  --build-arg VITE_SUPABASE_ANON_KEY=eyJhbGci... \
+  -t aliral:latest .
+
+# Servir en el puerto 80
+docker run -p 80:80 aliral:latest
+# → http://localhost
+```
+
+### Archivos Docker en este repo
+
+| Archivo | Para qué |
+|---|---|
+| `Dockerfile` | Multi-stage: `dev` (Node 18 + Vite) → `builder` → `production` (nginx) |
+| `docker-compose.yml` | Entorno de desarrollo local con hot reload |
+| `nginx.conf` | Configuración nginx para SPA (redirige rutas al `index.html`) |
+| `.dockerignore` | Excluye `node_modules`, `dist` y `.env` del contexto de build |
 
 ---
 

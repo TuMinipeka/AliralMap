@@ -1,0 +1,16 @@
+services:
+  app:
+    build:
+      context: .
+      target: dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      # Volumen anónimo para que node_modules del contenedor no sea pisado por el host
+      - node_modules:/app/node_modules
+    env_file:
+      - .env
+
+volumes:
+  node_modules:
