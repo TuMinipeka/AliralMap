@@ -1,8 +1,10 @@
-# Aliral — Información colaborativa en emergencias
+# 🆘 Aliral
 
-Plataforma web colaborativa tipo "Waze de emergencias": ciudadanos reportan recursos y peligros geolocalizados en tiempo real durante desastres naturales o crisis urbanas. Los reportes aparecen en el mapa de todos los usuarios al instante, sin recargar la página.
+**Plataforma colaborativa de emergencias en tiempo real.**  
+Ciudadanos reportan recursos y peligros geolocalizados — agua, comida, refugios, zonas de riesgo —  
+y el resto los ve en el mapa al instante, sin recargar la página.
 
-**Cobertura inicial:** Bucaramanga, Santander, Colombia
+> Cobertura inicial · Bucaramanga, Santander, Colombia
 
 ---
 
@@ -11,59 +13,53 @@ Plataforma web colaborativa tipo "Waze de emergencias": ciudadanos reportan recu
 ### Frontend
 
 | Tecnología | Versión | Rol |
-|---|---|---|
-| [React](https://react.dev) | 18 | UI declarativa basada en componentes |
-| [Vite](https://vitejs.dev) | 5 | Bundler y servidor de desarrollo con HMR |
-| [TypeScript](https://www.typescriptlang.org) | 5 | Tipado estático en todo el proyecto |
-| [Tailwind CSS](https://tailwindcss.com) | 3 | Estilos utility-first, mobile-first |
+|---|:---:|---|
+| React | 18 | UI declarativa basada en componentes |
+| Vite | 5 | Bundler y servidor de desarrollo con HMR |
+| TypeScript | 5 | Tipado estático en todo el proyecto |
+| Tailwind CSS | 3 | Estilos utility-first, enfoque mobile-first |
 
 ### Mapa
 
 | Tecnología | Rol |
 |---|---|
-| [Leaflet.js](https://leafletjs.com) | Motor de mapa interactivo (open source) |
-| [React-Leaflet](https://react-leaflet.js.org) | Bindings de Leaflet para React |
-| [OpenStreetMap](https://www.openstreetmap.org) | Tiles del mapa (gratuitos, sin API key) |
+| Leaflet.js | Motor de mapa interactivo, open source |
+| React-Leaflet | Bindings de Leaflet para React |
+| OpenStreetMap | Tiles del mapa — gratuitos, sin API key |
 
-### Backend — Supabase
+### Backend · Supabase
 
 | Servicio | Rol |
 |---|---|
-| **PostgreSQL** | Base de datos relacional — tabla `reports` y `profiles` |
-| **Supabase Auth** | Autenticación con email/contraseña, sesión JWT |
-| **Supabase Realtime** | WebSockets — los nuevos reportes aparecen en el mapa sin refresh |
-| **Supabase Storage** | Almacenamiento de imágenes adjuntas a reportes (fase 2) |
-| **Row Level Security** | Políticas de acceso a nivel de fila en PostgreSQL |
+| PostgreSQL | Base de datos relacional — tablas `reports` y `profiles` |
+| Supabase Auth | Autenticación con email/contraseña, sesión JWT |
+| Supabase Realtime | WebSockets — reportes nuevos aparecen sin recargar |
+| Supabase Storage | Imágenes adjuntas a reportes _(fase 2)_ |
+| Row Level Security | Políticas de acceso a nivel de fila en PostgreSQL |
 
-### APIs del navegador
+### APIs y plataformas
 
-| API | Rol |
-|---|---|
-| [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API) | Captura las coordenadas GPS del usuario para geolocalizar el reporte |
-
-### Infraestructura y deploy
-
-| Plataforma | Rol |
-|---|---|
-| [Vercel](https://vercel.com) | Deploy automático del frontend desde GitHub, HTTPS incluido |
-| [Supabase Cloud](https://supabase.com) | Backend gestionado — base de datos, auth y realtime en la nube |
-| [Docker](https://www.docker.com) | Entorno de desarrollo local estandarizado (obligatorio) |
-| [nginx](https://nginx.org) | Servidor de la imagen de producción Docker |
+| Capa | Tecnología | Rol |
+|---|---|---|
+| Geolocalización | Browser Geolocation API | Captura coordenadas GPS del usuario |
+| Deploy frontend | Vercel | CI/CD automático desde GitHub, HTTPS incluido |
+| Deploy backend | Supabase Cloud | Base de datos, auth y realtime gestionados |
+| Dev local | Docker + nginx | Entorno estandarizado y build de producción |
 
 ---
 
 ## Categorías de reporte
 
-| Emoji | Categoría | Descripción |
-|---|---|---|
-| 🍱 | Alimentos | Punto de distribución de comida |
-| 💧 | Agua | Agua potable disponible |
-| 🏠 | Refugio | Albergue o lugar seguro |
-| 🏥 | Médico | Atención médica o primeros auxilios |
-| ⚠️ | Peligro | Zona de riesgo general |
-| 🚧 | Vía bloqueada | Carretera o calle interrumpida |
-| 🚁 | Rescate | Operación de rescate en curso |
-| 🆘 | SOS | Emergencia activa, se necesita ayuda urgente |
+| Categoría | Descripción |
+|---|---|
+| 🍱 Alimentos | Punto de distribución de comida |
+| 💧 Agua | Agua potable disponible |
+| 🏠 Refugio | Albergue o lugar seguro |
+| 🏥 Médico | Atención médica o primeros auxilios |
+| ⚠ Peligro | Zona de riesgo general |
+| 🚧 Vía bloqueada | Carretera o calle interrumpida |
+| 🚁 Rescate | Operación de rescate en curso |
+| 🆘 SOS | Emergencia activa, se necesita ayuda urgente |
 
 ---
 
@@ -71,68 +67,73 @@ Plataforma web colaborativa tipo "Waze de emergencias": ciudadanos reportan recu
 
 ```
 aliral/
+│
 ├── src/
 │   ├── components/
-│   │   ├── auth/          # LoginForm, RegisterForm
-│   │   ├── map/           # EmergencyMap (Leaflet), CategoryFilter
-│   │   ├── reports/       # ReportForm (modal de nuevo reporte)
-│   │   ├── layout/        # Navbar
-│   │   └── ui/            # LoadingSpinner
+│   │   ├── auth/           LoginForm · RegisterForm
+│   │   ├── map/            EmergencyMap · CategoryFilter
+│   │   ├── reports/        ReportForm
+│   │   ├── layout/         Navbar
+│   │   └── ui/             LoadingSpinner
+│   │
 │   ├── pages/
-│   │   ├── MapPage.tsx    # Página principal — mapa + FAB + filtros
-│   │   └── AuthPage.tsx   # Overlay de login / registro
+│   │   ├── MapPage.tsx     Página principal — mapa, filtros y FAB
+│   │   └── AuthPage.tsx    Overlay de login y registro
+│   │
 │   ├── hooks/
-│   │   ├── useAuth.ts     # Sesión del usuario + listener Supabase Auth
-│   │   └── useReports.ts  # Reportes + suscripción Realtime + geolocalización
+│   │   ├── useAuth.ts      Sesión del usuario + listener Supabase Auth
+│   │   └── useReports.ts   Reportes + Realtime + geolocalización
+│   │
 │   ├── services/
-│   │   ├── supabase.ts    # Inicialización del cliente Supabase
-│   │   ├── auth.ts        # signUp / signIn / signOut / getCurrentUser
-│   │   └── reports.ts     # getActiveReports / createReport / confirmReport
-│   ├── constants/
-│   │   └── categories.ts  # Metadatos de categorías + coordenadas Bucaramanga
-│   ├── types/
-│   │   └── index.ts       # Report, CreateReportPayload, UserProfile
+│   │   ├── supabase.ts     Inicialización del cliente
+│   │   ├── auth.ts         signUp · signIn · signOut · getCurrentUser
+│   │   └── reports.ts      getActiveReports · createReport · confirmReport
+│   │
+│   ├── constants/          Metadatos de categorías · coordenadas Bucaramanga
+│   ├── types/              Report · CreateReportPayload · UserProfile
 │   ├── App.tsx
 │   ├── main.tsx
 │   └── index.css
+│
 ├── public/
-├── Dockerfile             # Multi-stage: dev → builder → production (nginx)
-├── docker-compose.yml     # Entorno de desarrollo local
-├── nginx.conf             # Configuración nginx para SPA
+├── Dockerfile              Multi-stage: dev → builder → production (nginx)
+├── docker-compose.yml      Entorno de desarrollo local
+├── nginx.conf              Configuración nginx para SPA
 ├── index.html
 ├── package.json
 ├── tailwind.config.js
-├── tsconfig.json
-└── vite.config.ts
+└── tsconfig.json
 ```
 
 ---
 
 ## Variables de entorno
 
-Crea un archivo `.env` en la raíz a partir de `.env.example`:
+Copia `.env.example` a `.env` y completa los valores antes de levantar el proyecto.
 
 | Variable | Dónde obtenerla |
 |---|---|
 | `VITE_SUPABASE_URL` | Supabase → Project Settings → API → **Project URL** |
 | `VITE_SUPABASE_ANON_KEY` | Supabase → Project Settings → API → **anon / public** |
 
-> Nunca subas `.env` al repositorio. El `.gitignore` ya lo excluye.
+> ⚠ Nunca subas `.env` al repositorio — el `.gitignore` ya lo excluye.
 
 ---
 
 ## Cómo ejecutar el proyecto
 
-> **Docker es obligatorio.** No se necesita Node ni npm instalados en el host.
+Docker es obligatorio. No se requiere tener Node ni npm instalados en el host.
 
-### Requisitos
+**Requisitos**
 
 | Herramienta | Descarga |
 |---|---|
 | Docker Desktop | https://www.docker.com/products/docker-desktop |
 | Git | https://git-scm.com |
 
-### 1. Clonar el repositorio
+---
+
+### 1 · Clonar el repositorio
 
 **Linux / macOS**
 ```bash
@@ -146,7 +147,9 @@ git clone https://github.com/tu-usuario/aliral.git
 cd aliral
 ```
 
-### 2. Configurar las variables de entorno
+---
+
+### 2 · Configurar las variables de entorno
 
 **Linux / macOS**
 ```bash
@@ -158,9 +161,11 @@ cp .env.example .env
 Copy-Item .env.example .env
 ```
 
-Abre `.env` y rellena los valores con tus keys de Supabase.
+Abre `.env` y pega tus keys de Supabase.
 
-### 3. Levantar el entorno de desarrollo
+---
+
+### 3 · Levantar el entorno de desarrollo
 
 **Linux / macOS**
 ```bash
@@ -172,7 +177,9 @@ docker compose up
 docker compose up
 ```
 
-Abre el navegador en: **http://localhost:5173**
+Abre **http://localhost:5173** en el navegador.
+
+> La primera vez tarda más — Docker instala las dependencias dentro del contenedor.
 
 Para detenerlo:
 
@@ -188,9 +195,10 @@ docker compose down
 
 ---
 
-## Build de producción con Docker
+### Build de producción
 
-Las variables `VITE_*` se incluyen en el bundle durante el build. Reemplaza los valores antes de ejecutar.
+Las variables `VITE_*` se incluyen en el bundle durante el build.  
+Reemplaza los valores con tus keys reales de Supabase antes de ejecutar.
 
 **Linux / macOS**
 ```bash
@@ -214,4 +222,4 @@ docker build `
 docker run -p 80:80 aliral:latest
 ```
 
-Abre el navegador en: **http://localhost**
+Abre **http://localhost** en el navegador.
