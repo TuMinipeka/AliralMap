@@ -1,36 +1,26 @@
 <div align="center">
 
-<br>
+  <img src="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/siren.svg" alt="Aliral Logo" width="80" height="80">
 
-```
- █████╗ ██╗     ██╗██████╗  █████╗ ██╗          ███╗   ███╗ █████╗ ██████╗ 
-██╔══██╗██║     ██║██╔══██╗██╔══██╗██║          ████╗ ████║██╔══██╗██╔══██╗
-███████║██║     ██║██████╔╝███████║██║          ██╔████╔██║███████║██████╔╝
-██╔══██║██║     ██║██╔══██╗██╔══██║██║          ██║╚██╔╝██║██╔══██║██╔═══╝ 
-██║  ██║███████╗██║██║  ██╗██║  ██║███████╗     ██║ ╚═╝ ██║██║  ██║██║     
-╚═╝  ╚═╝╚══════╝╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝    ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝     
-```
+  # 🚨 ALIRAL
+  **Plataforma colaborativa de emergencias en tiempo real**
 
-<br>
+  *Ciudadanos reportan · Comunidades responden · Vidas se salvan*
 
-**Plataforma colaborativa de emergencias en tiempo real**
+  <br />
 
-*Ciudadanos reportan · Comunidades responden · Vidas se salvan*
+  [![React](https://img.shields.io/badge/React_18-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](#)
+  [![TypeScript](https://img.shields.io/badge/TypeScript_5-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](#)
+  [![Vite](https://img.shields.io/badge/Vite_5-646CFF?style=for-the-badge&logo=vite&logoColor=white)](#)
+  [![Tailwind](https://img.shields.io/badge/Tailwind_3-38B2AC?style=for-the-badge&logo=tailwindcss&logoColor=white)](#)
+  [![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=black)](#)
+  [![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](#)
 
-<br>
+  <br />
 
-![React](https://img.shields.io/badge/React_18-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![TypeScript](https://img.shields.io/badge/TypeScript_5-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite_5-646CFF?style=for-the-badge&logo=vite&logoColor=white)
-![Tailwind](https://img.shields.io/badge/Tailwind_3-38B2AC?style=for-the-badge&logo=tailwindcss&logoColor=white)
-![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=black)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+  📍 `Bucaramanga · Santander · Colombia`
 
-<br>
-
-`Bucaramanga · Santander · Colombia`
-
-<br>
+</div>
 
 </div>
 
