@@ -4,13 +4,12 @@
 
 ## Requisitos previos
 
-| Herramienta | Versión mínima | Descarga |
-|---|---|---|
-| Node.js | 20+ | https://nodejs.org |
-| npm | 9+ | incluido con Node |
-| Docker | cualquiera | https://www.docker.com (solo si usas Docker) |
+| Herramienta | Descarga |
+|---|---|
+| Docker Desktop | https://www.docker.com/products/docker-desktop |
+| Git | https://git-scm.com |
 
-También necesitas una cuenta en [Supabase](https://supabase.com) (gratuita) para obtener las variables de entorno.
+> No se necesita Node ni npm instalados en el host.
 
 ---
 
@@ -42,7 +41,7 @@ cp .env.example .env
 Copy-Item .env.example .env
 ```
 
-Luego abre `.env` y rellena los valores:
+Abre `.env` y rellena los valores:
 
 ```env
 VITE_SUPABASE_URL=https://xxxxxxxxxxxx.supabase.co
@@ -53,41 +52,7 @@ VITE_SUPABASE_ANON_KEY=eyJhbGci...
 
 ---
 
-## Opción A — Ejecutar con Node (sin Docker)
-
-### 3A. Instalar dependencias
-
-**Linux / macOS**
-```bash
-npm install
-```
-
-**PowerShell**
-```powershell
-npm install
-```
-
-### 4A. Levantar el servidor de desarrollo
-
-**Linux / macOS**
-```bash
-npm run dev
-```
-
-**PowerShell**
-```powershell
-npm run dev
-```
-
-Abre el navegador en: **http://localhost:5173**
-
----
-
-## Opción B — Ejecutar con Docker
-
-No necesitas tener Node instalado en tu máquina.
-
-### 3B. Levantar el contenedor
+## 3. Levantar el proyecto
 
 **Linux / macOS**
 ```bash
@@ -101,7 +66,7 @@ docker compose up
 
 Abre el navegador en: **http://localhost:5173**
 
-> La primera vez tarda más porque descarga la imagen y ejecuta `npm install` dentro del contenedor.
+> La primera vez tarda más porque descarga la imagen base y ejecuta `npm install` dentro del contenedor.
 
 Para detenerlo:
 
@@ -117,23 +82,9 @@ docker compose down
 
 ---
 
-## Build de producción (opcional)
+## Build de producción
 
-### Con Node
-
-**Linux / macOS**
-```bash
-npm run build
-```
-
-**PowerShell**
-```powershell
-npm run build
-```
-
-El resultado queda en la carpeta `dist/`.
-
-### Con Docker (imagen nginx lista para deploy)
+Genera una imagen nginx lista para deploy. Las variables `VITE_*` se incluyen en el bundle durante el build — reemplaza los valores por tus keys reales de Supabase.
 
 **Linux / macOS**
 ```bash
@@ -158,6 +109,3 @@ docker run -p 80:80 aliral:latest
 ```
 
 Abre el navegador en: **http://localhost**
-
-> Las variables `VITE_*` se incluyen en el bundle durante el build.
-> Reemplaza los valores por tus keys reales de Supabase antes de ejecutar.
