@@ -1,13 +1,10 @@
-// Raíz de la aplicación: controla qué overlay está visible
-import { useState } from 'react'
 import { MapPage } from '@/pages/MapPage'
 import { AuthPage } from '@/pages/AuthPage'
 import { useAuth } from '@/hooks/useAuth'
 import { LoadingSpinner } from '@/components/ui/LoadingSpinner'
 
 export default function App() {
-  const { loading } = useAuth()
-  const [showAuth, setShowAuth] = useState(false)
+  const { user, loading } = useAuth()
 
   if (loading) {
     return (
@@ -17,15 +14,9 @@ export default function App() {
     )
   }
 
-  return (
-    <>
-      <MapPage onOpenAuth={() => setShowAuth(true)} />
-      {showAuth && (
-        <AuthPage
-          onSuccess={() => setShowAuth(false)}
-          onClose={() => setShowAuth(false)}
-        />
-      )}
-    </>
-  )
+  if (!user) {
+    return <AuthPage onSuccess={() => {}} />
+  }
+
+  return <MapPage onOpenAuth={() => {}} />
 }

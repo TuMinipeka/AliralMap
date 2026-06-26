@@ -1,4 +1,3 @@
-// Hook de sesión: expone user, loading y helpers de auth con listener en tiempo real
 import { useState, useEffect } from 'react'
 import type { User } from '@supabase/supabase-js'
 import { supabase } from '@/services/supabase'
@@ -13,16 +12,17 @@ export function useAuth(): UseAuthReturn {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // TODO: implementar — supabase.auth.getSession() + onAuthStateChange listener
-    void setUser
-    setLoading(false)
-    return () => {
-      // TODO: cleanup del listener
-    }
-  }, [])
+    supabase.auth.getSession().then(({ data }) => {
+      setUser(data.session?.user ?? null)
+      setLoading(false)
+    })
 
-  // Evitar warning de import no utilizado durante desarrollo
-  void supabase
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null)
+    })
+
+    return () => subscription.unsubscribe()
+  }, [])
 
   return { user, loading }
 }
