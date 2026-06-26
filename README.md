@@ -1,10 +1,38 @@
-# 🆘 Aliral
+<div align="center">
 
-**Plataforma colaborativa de emergencias en tiempo real.**  
-Ciudadanos reportan recursos y peligros geolocalizados — agua, comida, refugios, zonas de riesgo —  
-y el resto los ve en el mapa al instante, sin recargar la página.
+<br>
 
-> Cobertura inicial · Bucaramanga, Santander, Colombia
+```
+ █████╗ ██╗     ██╗██████╗  █████╗ ██╗     
+██╔══██╗██║     ██║██╔══██╗██╔══██╗██║     
+███████║██║     ██║██████╔╝███████║██║     
+██╔══██║██║     ██║██╔══██╗██╔══██║██║     
+██║  ██║███████╗██║██║  ██╗██║  ██║███████╗
+╚═╝  ╚═╝╚══════╝╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝
+```
+
+<br>
+
+**Plataforma colaborativa de emergencias en tiempo real**
+
+*Ciudadanos reportan · Comunidades responden · Vidas se salvan*
+
+<br>
+
+![React](https://img.shields.io/badge/React_18-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript_5-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite_5-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Tailwind](https://img.shields.io/badge/Tailwind_3-38B2AC?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=black)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+
+<br>
+
+`Bucaramanga · Santander · Colombia`
+
+<br>
+
+</div>
 
 ---
 
