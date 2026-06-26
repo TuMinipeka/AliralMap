@@ -1,4 +1,3 @@
-// Barra superior: logo Aliral, contador de reportes activos y estado de sesión
 import type { User } from '@supabase/supabase-js'
 
 interface NavbarProps {
@@ -9,35 +8,52 @@ interface NavbarProps {
 }
 
 export function Navbar({ user, reportCount, onOpenAuth, onSignOut }: NavbarProps) {
-  // TODO: implementar UI — logo + contador + botón login/logout
+  const firstName = user?.user_metadata?.first_name as string | undefined
+  const email = user?.email ?? ''
+  const displayName = firstName ?? email.split('@')[0]
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 py-2 bg-brand-night-soft/90 backdrop-blur-sm sm:px-6">
-      <div className="flex items-center gap-2">
-        {/* TODO: SVG logo */}
-        <span className="text-brand-orange font-bold text-lg sm:text-xl">Aliral</span>
+    <nav className="fixed top-0 left-0 right-0 z-[500] flex items-center justify-between px-4 py-2.5 bg-brand-night-soft/90 backdrop-blur-sm border-b border-white/5 sm:px-6">
+      {/* Logo + contador */}
+      <div className="flex items-center gap-2.5">
+        <div className="flex items-center justify-center w-8 h-8 bg-brand-orange rounded-lg">
+          <span className="text-white text-sm font-black">A</span>
+        </div>
+        <span className="text-white font-bold text-lg tracking-tight">Aliral</span>
         <span className="text-xs text-gray-400 bg-brand-slate px-2 py-0.5 rounded-full">
           {reportCount} activos
         </span>
       </div>
-      <div>
-        {user ? (
+
+      {/* Sesión */}
+      {user ? (
+        <div className="flex items-center gap-3">
+          <div className="hidden sm:flex flex-col items-end">
+            <span className="text-white text-sm font-medium leading-tight">{displayName}</span>
+            <span className="text-gray-500 text-xs leading-tight">{email}</span>
+          </div>
+          <div className="w-8 h-8 bg-brand-orange/20 rounded-full flex items-center justify-center">
+            <span className="text-brand-orange text-sm font-bold">
+              {displayName.charAt(0).toUpperCase()}
+            </span>
+          </div>
           <button
             onClick={onSignOut}
-            className="text-sm text-gray-300 hover:text-white sm:text-base"
+            className="flex items-center gap-1.5 text-sm text-gray-400 hover:text-red-400 transition-colors"
+            title="Cerrar sesión"
           >
-            {/* TODO: implementar */}
-            Salir
+            <span className="hidden sm:inline">Salir</span>
+            <span>⏏</span>
           </button>
-        ) : (
-          <button
-            onClick={onOpenAuth}
-            className="text-sm bg-brand-orange hover:bg-brand-orange-dark text-white px-3 py-1 rounded-lg sm:text-base"
-          >
-            Entrar
-          </button>
-        )}
-      </div>
+        </div>
+      ) : (
+        <button
+          onClick={onOpenAuth}
+          className="text-sm bg-brand-orange hover:bg-brand-orange-dark text-white px-4 py-1.5 rounded-lg font-medium transition-colors"
+        >
+          Entrar
+        </button>
+      )}
     </nav>
   )
 }
