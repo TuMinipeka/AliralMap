@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fondo oscuro para el contenedor de Leaflet */
+.leaflet-container {
+  background-color: #0F1117;
+}
+
+/* Ocultar scrollbar manteniendo funcionalidad de scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
